@@ -1,25 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import { increment,decrement,incrementByAmount } from "./cartSlice";
+import { UseSelector,useDispatch, useSelector } from "react-redux"
+import Second from './Second'
+const App=()=>{
+  const cart=useSelector(state=>state.cart.value)
+  console.log(cart);
+  const dispatch=useDispatch()
+   return<> 
+   <p>{cart}</p>
+   <button onClick={()=>{dispatch(decrement())}}>-</button> 
+   <button onClick={()=>{dispatch(increment())}}>+</button>
+   <button onClick={()=>{dispatch(incrementByAmount(10))}}>+10</button>
+   <Second />
+  </>
 }
-
 export default App;
